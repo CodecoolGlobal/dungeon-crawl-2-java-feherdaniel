@@ -8,5 +8,14 @@ public abstract class Item implements Drawable {
 
     public Item(Cell cell) {
         this.cell = cell;
+        this.cell.setItem(this);
+    }
+
+    public Item() {
+
+    }
+
+    public Cell getCell() {
+        return cell;
     }
 }

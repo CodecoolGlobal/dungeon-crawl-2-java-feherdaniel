@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a1f3c129-bb91-4c24-8aea-94ebd30fc808" name="Default Changelist" comment="restrict movement">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Sword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Sword.java" afterDir="false" />
+    </list>
+    <list id="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" name="Changes by daniel" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Tiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Tiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Cell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/Cell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/map.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/MapLoader.java">
+      <ranges>
+        <range start1="5" end1="5" start2="5" end2="7" changelist="a1f3c129-bb91-4c24-8aea-94ebd30fc808" />
+        <range start1="40" end1="41" start2="42" end2="47" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/Main.java">
+      <ranges>
+        <range start1="10" end1="10" start2="10" end2="11" changelist="a1f3c129-bb91-4c24-8aea-94ebd30fc808" />
+        <range start1="16" end1="16" start2="17" end2="19" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+        <range start1="24" end1="24" start2="27" end2="29" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+        <range start1="37" end1="37" start2="42" end2="56" changelist="a1f3c129-bb91-4c24-8aea-94ebd30fc808" />
+        <range start1="39" end1="40" start2="58" end2="58" changelist="a1f3c129-bb91-4c24-8aea-94ebd30fc808" />
+        <range start1="81" end1="81" start2="99" end2="101" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+        <range start1="87" end1="87" start2="107" end2="108" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+      </ranges>
+    </file>
+    <file path="$PROJECT_DIR$/src/main/java/com/codecool/dungeoncrawl/logic/actors/Player.java">
+      <ranges>
+        <range start1="3" end1="3" start2="3" end2="6" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+        <range start1="5" end1="5" start2="8" end2="10" changelist="291e49d3-a6d1-44bc-ae1d-72dfcd5c57dc" />
+        <range start1="8" end1="9" start2="13" end2="19" changelist="a1f3c129-bb91-4c24-8aea-94ebd30fc808" />
+      </ranges>
+    </file>
+  </component>
+  <component name="ProjectId" id="1s1WDSr7y3cuHiXSqwrH7i7szAF" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.codecool.dungeoncrawl.App" />
+      <module name="dungeon-crawl" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.codecool.dungeoncrawl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1f3c129-bb91-4c24-8aea-94ebd30fc808" name="Default Changelist" comment="" />
+      <created>1620040456566</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1620040456566</updated>
+      <workItem from="1620040458438" duration="7377000" />
+      <workItem from="1620052006842" duration="950000" />
+      <workItem from="1620054268683" duration="1494000" />
+      <workItem from="1620113218057" duration="4260000" />
+      <workItem from="1620117518381" duration="103000" />
+      <workItem from="1620117631639" duration="3836000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="restrict movement" />
+    <option name="LAST_COMMIT_MESSAGE" value="restrict movement" />
+  </component>
+</project>
