@@ -6,6 +6,9 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+~/IdeaProjects/.idea/
+~/IdeaProjects/target/
+~/IdeaProjects/dungeon-crawl.iml
 .idea/
 target/
 dungeon-crawl.iml
