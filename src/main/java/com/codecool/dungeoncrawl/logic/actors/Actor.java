@@ -59,6 +59,8 @@ public abstract class Actor implements Drawable {
         return health;
     }
 
+    public int getMaxHealth() { return maxHealth; }
+
     public Cell getCell() {
         return cell;
     }
