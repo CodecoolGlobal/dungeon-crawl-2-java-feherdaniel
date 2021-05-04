@@ -5,8 +5,10 @@ import com.codecool.dungeoncrawl.logic.items.Item;
 import com.codecool.dungeoncrawl.logic.items.Key;
 import com.codecool.dungeoncrawl.logic.items.Sword;
 
+import java.util.ArrayList;
+
 public class Player extends Actor {
-    public Item[] inventory = {new Sword(), new Key()};
+    public ArrayList<Item> inventory = new ArrayList<>();
 
     public Player(Cell cell) {
         super(cell);
@@ -23,5 +25,9 @@ public class Player extends Actor {
 
     public String getTileName() {
         return "player";
+    }
+
+    public void addToInventory(Item item) {
+        inventory.add(item);
     }
 }

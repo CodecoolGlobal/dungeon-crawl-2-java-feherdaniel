@@ -47,19 +47,22 @@ public class Main extends Application {
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
 
-        ui.add(new Label("Inventory: "),0, 1);
-        ui.add(inventory, 1, 1);
+        ui.add(new Label("Inventory: "),0, 2);
+        ui.add(inventory, 1, 2);
 
 
+        Button button = new Button("Pick up item");
 
-        Button button = new Button("Click");
+        button.setOnAction(value ->  {
+            //testlabel.setText("Clicked!");
+            map.pickUpItem();
+            refresh();
+        });
 
-        /* button.setOnAction(value ->  {
-            label.setText("Clicked!");
-        }); */
 
-//        GridPane.setConstraints(button, 0, 3);
-//        ui.getChildren().add(button);
+        button.setFocusTraversable(false);
+        ui.add(button, 1, 1);
+
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(canvas);
