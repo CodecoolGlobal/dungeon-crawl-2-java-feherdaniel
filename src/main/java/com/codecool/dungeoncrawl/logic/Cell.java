@@ -47,4 +47,6 @@ public class Cell implements Drawable {
     public int getY() {
         return y;
     }
+
+    public int[] getMapParams() { return new int[]{gameMap.getWidth(), gameMap.getHeight()}; }
 }
