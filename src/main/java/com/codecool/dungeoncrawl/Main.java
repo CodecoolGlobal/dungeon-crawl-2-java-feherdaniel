@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
@@ -16,8 +17,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+
+import java.util.Arrays;
+
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
@@ -26,6 +31,8 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
+    //Label label = new Label("Not clicked");
+    Label inventory = new Label();
 
     public static void main(String[] args) {
         launch(args);
@@ -40,8 +47,24 @@ public class Main extends Application {
         ui.add(new Label("Health: "), 0, 0);
         ui.add(healthLabel, 1, 0);
 
-        BorderPane borderPane = new BorderPane();
+        ui.add(new Label("Inventory: "),0, 2);
+        ui.add(inventory, 1, 2);
 
+
+        Button button = new Button("Pick up item");
+
+        button.setOnAction(value ->  {
+            //testlabel.setText("Clicked!");
+            map.pickUpItem();
+            refresh();
+        });
+
+
+        button.setFocusTraversable(false);
+        ui.add(button, 1, 1);
+
+
+        BorderPane borderPane = new BorderPane();
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
 
@@ -94,11 +117,14 @@ public class Main extends Application {
                 Cell cell = map.getCell(x, y);
                 if (cell.getActor() != null) {
                     Tiles.drawTile(context, cell.getActor(), x, y);
+                } else if (cell.getItem() != null) {
+                    Tiles.drawTile(context, cell.getItem(), x, y);
                 } else {
                     Tiles.drawTile(context, cell, x, y);
                 }
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+        inventory.setText("" + map.getPlayer().getInventory());
     }
 }

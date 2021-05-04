@@ -39,4 +39,12 @@ public class GameMap {
     public int getHeight() {
         return height;
     }
+
+    public void pickUpItem() {
+        Cell playerCell = player.getCell();
+        if (playerCell.getItem() != null) {
+            player.addToInventory(playerCell.getItem());
+            playerCell.setItem(null);
+        }
+    }
 }
