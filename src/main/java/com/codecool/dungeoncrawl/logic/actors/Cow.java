@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 
 public class Cow extends Actor {
+
     public Cow(Cell cell) {
         super(cell, 30898);
         // takes a byte out of you
@@ -19,7 +20,7 @@ public class Cow extends Actor {
         int[][] offsets = { {-1, 0}, {1, 0}, {0, 1}, {0, -1}};
         for (int[] offset : offsets) {
             Actor target = getCell().getNeighbour(offset[0], offset[1]).getActor();
-            if (target != null && target.getClass() == Player.class) {
+            if (target != null && target.getClass() == Player.class && getHealth() < getMaxHealth()) {
                 attack(offset[0], offset[1]);
                 break;
             }

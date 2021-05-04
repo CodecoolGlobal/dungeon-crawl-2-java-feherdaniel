@@ -57,6 +57,10 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Ember(cell);
                             break;
+                        case 'g':
+                            cell.setType(CellType.FLOOR);
+                            new Ghost(cell);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
