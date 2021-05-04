@@ -32,7 +32,9 @@ public class Main extends Application {
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
     //Label label = new Label("Not clicked");
+    Label firstItem = new Label();
     Label inventory = new Label();
+    Label damageLabel = new Label();
 
     public static void main(String[] args) {
         launch(args);
@@ -44,24 +46,33 @@ public class Main extends Application {
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
-        ui.add(new Label("Health: "), 0, 0);
-        ui.add(healthLabel, 1, 0);
+        ui.add(new Label(" "),0,0);
+        ui.add(new Label(" "),0,1);
 
-        ui.add(new Label("Inventory: "),0, 2);
-        ui.add(inventory, 1, 2);
+        ui.add(new Label("Health: "), 0, 2);
+        ui.add(healthLabel, 1, 2);
+
+        ui.add(new Label("Damage: "), 0, 3);
+        ui.add(damageLabel, 1,3);
+
+        ui.add(new Label(" "),0,4);
+
+        ui.add(new Label("Inventory: "),0, 5);
+        ui.add(firstItem, 1,5);
+
+        ui.add(inventory, 1, 6);
 
 
         Button button = new Button("Pick up item");
 
         button.setOnAction(value ->  {
-            //testlabel.setText("Clicked!");
             map.pickUpItem();
             refresh();
         });
 
 
         button.setFocusTraversable(false);
-        ui.add(button, 1, 1);
+        ui.add(button, 0, 0);
 
 
         BorderPane borderPane = new BorderPane();
@@ -125,6 +136,8 @@ public class Main extends Application {
             }
         }
         healthLabel.setText("" + map.getPlayer().getHealth());
+        firstItem.setText("" + map.getPlayer().getFirstItem());
         inventory.setText("" + map.getPlayer().getInventory());
+        damageLabel.setText("" + map.getPlayer().getDmg());
     }
 }
