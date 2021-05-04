@@ -4,6 +4,8 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
 
+import java.util.Arrays;
+
 public abstract class Actor implements Drawable {
     private Cell cell;
     private int maxHealth = 10;
@@ -39,6 +41,17 @@ public abstract class Actor implements Drawable {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;
+        }
+    }
+
+    public void move(int dx, int dy, CellType... walkableCells) {
+        if (Arrays.asList(walkableCells).contains(cell.getNeighbour(dx, dy).getType())) {
+            if (cell.getNeighbour(dx, dy).getActor() == null) {
+                Cell nextCell = cell.getNeighbour(dx, dy);
+                cell.setActor(null);
+                nextCell.setActor(this);
+                cell = nextCell;
+            }
         }
     }
 

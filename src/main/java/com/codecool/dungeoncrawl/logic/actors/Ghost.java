@@ -3,19 +3,19 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 
-public class Skeleton extends Actor {
-    private final double moveChance = 0.5;
+public class Ghost extends Actor {
+    private final double moveChance = 0.3;
+    Cell cell;
 
-    public Skeleton(Cell cell) {
-        super(cell);
+    public Ghost(Cell cell) {
+        super(cell, 13);
+        this.setDmg(3);
         this.setIsEnemy();
-        this.setDmg(2);
+        this.cell = cell;
     }
 
     @Override
-    public String getTileName() {
-        return "skeleton";
-    }
+    public String getTileName() { return "ghost"; }
 
     @Override
     public void onRefresh() {
@@ -33,8 +33,9 @@ public class Skeleton extends Actor {
             if (Math.random() < moveChance) return;
             int[] targetOffset = offsets[(int)(Math.random() * 4)];
             Cell target = getCell().getNeighbour(targetOffset[0], targetOffset[1]);
-            if (target.getActor() == null && target.getType() == CellType.FLOOR)
-                move(targetOffset[0], targetOffset[1]);
+            if (target.getActor() == null)
+                move(targetOffset[0], targetOffset[1], CellType.FLOOR, CellType.WALL);
         }
     }
+
 }
