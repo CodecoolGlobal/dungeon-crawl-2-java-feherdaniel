@@ -10,7 +10,7 @@ class CellTest {
     @Test
     void getNeighbor() {
         Cell cell = map.getCell(1, 1);
-        Cell neighbor = cell.getNeighbor(-1, 0);
+        Cell neighbor = cell.getNeighbour(-1, 0);
         assertEquals(0, neighbor.getX());
         assertEquals(1, neighbor.getY());
     }
@@ -18,9 +18,9 @@ class CellTest {
     @Test
     void cellOnEdgeHasNoNeighbor() {
         Cell cell = map.getCell(1, 0);
-        assertEquals(null, cell.getNeighbor(0, -1));
+        assertEquals(null, cell.getNeighbour(0, -1));
 
         cell = map.getCell(1, 2);
-        assertEquals(null, cell.getNeighbor(0, 1));
+        assertEquals(null, cell.getNeighbour(0, 1));
     }
 }
