@@ -5,10 +5,6 @@ public class Sword extends Item{
 
     public Sword(Cell cell) {super(cell);}
 
-    public Sword() {
-
-    }
-
     public String getTileName() {
         return "sword";
     }

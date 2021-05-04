@@ -6,10 +6,6 @@ public class Key extends Item{
 
     public Key(Cell cell) {super(cell);}
 
-    public Key() {
-
-    }
-
     public String getTileName() {
         return "key";
     }
