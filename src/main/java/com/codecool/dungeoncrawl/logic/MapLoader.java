@@ -38,7 +38,6 @@ public class MapLoader {
                             break;
                         case 'i':
                             cell.setType(CellType.FLOOR);
-                            new Item(cell);
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
