@@ -31,7 +31,6 @@ public class Main extends Application {
             map.getHeight() * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
-    //Label label = new Label("Not clicked");
     Label firstItem = new Label();
     Label inventory = new Label();
     Label damageLabel = new Label();
@@ -46,22 +45,11 @@ public class Main extends Application {
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
-        ui.add(new Label(" "),0,0);
+        nameLabel.setText(name);
+        ui.add(new Label("Name: "), 0, 0);
+        ui.add(nameLabel, 1, 0);
+
         ui.add(new Label(" "),0,1);
-
-        ui.add(new Label("Health: "), 0, 2);
-        ui.add(healthLabel, 1, 2);
-
-        ui.add(new Label("Damage: "), 0, 3);
-        ui.add(damageLabel, 1,3);
-
-        ui.add(new Label(" "),0,4);
-
-        ui.add(new Label("Inventory: "),0, 5);
-        ui.add(firstItem, 1,5);
-
-        ui.add(inventory, 1, 6);
-
 
         Button button = new Button("Pick up item");
 
@@ -72,8 +60,24 @@ public class Main extends Application {
 
 
         button.setFocusTraversable(false);
-        ui.add(button, 0, 0);
+        ui.add(button, 0, 2);
 
+        ui.add(new Label(" "),0,2);
+        ui.add(new Label(" "),0,3);
+
+        ui.add(new Label("Health: "), 0, 4);
+        ui.add(healthLabel, 1, 4);
+
+
+        ui.add(new Label("Damage: "), 0, 5);
+        ui.add(damageLabel, 1,5);
+
+        ui.add(new Label(" "),0,6);
+
+        ui.add(new Label("Inventory: "),0, 7);
+        ui.add(firstItem, 1,7);
+
+        ui.add(inventory, 1, 8);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(canvas);
