@@ -18,27 +18,21 @@ public class Cell implements Drawable {
         this.type = type;
     }
 
-    public CellType getType() {
-        return type;
-    }
+    public CellType getType() { return type; }
+    public void setType(CellType type) { this.type = type; }
 
-    public void setType(CellType type) {
-        this.type = type;
-    }
+    public Actor getActor() { return actor; }
+    public void setActor(Actor actor) { this.actor = actor; }
 
-    public void setActor(Actor actor) {
-        this.actor = actor;
-    }
+    public Item getItem() { return item; }
+    public void setItem(Item item) { this.item = item; }
 
-    public void setItem(Item item) {this.item = item;}
-
-    public Actor getActor() {
-        return actor;
-    }
-
-
-    public Item getItem() { return  item;}
-
+    /**
+     * Get Cell object at relative offset on same GameMap as caller
+     * @param dx Relative (signed) horizontal offset
+     * @param dy Relative (signed) vertical offset
+     * @return Cell object at specified offset
+     */
     public Cell getNeighbour(int dx, int dy) {
         return gameMap.getCell(x + dx, y + dy);
     }
@@ -51,12 +45,16 @@ public class Cell implements Drawable {
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
 
+    /**
+     * Get width and height of the map
+     * @return int[] containing gameMap.getWidth() and gameMap.getHeight()
+     */
     public int[] getMapParams() { return new int[]{gameMap.getWidth(), gameMap.getHeight()}; }
 
     public Player getAssociatedPlayer() { return gameMap.getPlayer(); }
+
 }
