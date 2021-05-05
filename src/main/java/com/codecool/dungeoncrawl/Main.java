@@ -158,5 +158,9 @@ public class Main extends Application {
         firstItem.setText("" + map.getPlayer().getFirstItem());
         inventory.setText("" + map.getPlayer().getInventory());
         damageLabel.setText("" + map.getPlayer().getDmg());
+
+        if (map.nextLevel()) {
+            System.out.println("Nice");
+        }
     }
 }

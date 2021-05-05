@@ -47,4 +47,12 @@ public class GameMap {
             playerCell.setItem(null);
         }
     }
+
+    public boolean nextLevel() {
+        Cell playerCell = player.getCell();
+        if (playerCell.getType() == CellType.EXIT) {
+            return true;
+        }
+        else return false;
+    }
 }
