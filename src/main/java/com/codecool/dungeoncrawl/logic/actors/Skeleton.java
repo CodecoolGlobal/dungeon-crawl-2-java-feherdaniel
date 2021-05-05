@@ -33,8 +33,8 @@ public class Skeleton extends Actor {
             if (Math.random() < moveChance) return;
             int[] targetOffset = offsets[(int)(Math.random() * 4)];
             Cell target = getCell().getNeighbour(targetOffset[0], targetOffset[1]);
-            if (target.getActor() == null && target.getType() == CellType.FLOOR)
-                move(targetOffset[0], targetOffset[1]);
+            if (target.getActor() == null)
+                move(targetOffset[0], targetOffset[1], CellType.FLOOR);
         }
     }
 }

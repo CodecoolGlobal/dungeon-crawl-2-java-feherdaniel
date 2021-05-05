@@ -18,10 +18,22 @@ public class Ember extends Actor {
 
     @Override
     public void onRefresh() {
-        int[] bounds = getCell().getMapParams();
-        int x = (int)Math.floor(Math.random() * bounds[0]);
-        int y = (int)Math.floor(Math.random() * bounds[1]);
-        if (Math.random() < moveChance)
-            move(x - getCell().getX(), y - getCell().getY(), CellType.FLOOR);
+        int[][] offsets = { {-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+        boolean attackDone = false;
+        for (int[] offset : offsets) {
+            Actor target = getCell().getNeighbour(offset[0], offset[1]).getActor();
+            if (target != null && target.getClass() == Player.class) {
+                attackDone = true;
+                attack(offset[0], offset[1]);
+                break;
+            }
+        }
+        if (!attackDone) {
+            int[] bounds = getCell().getMapParams();
+            int x = (int) Math.floor(Math.random() * bounds[0]);
+            int y = (int) Math.floor(Math.random() * bounds[1]);
+            if (Math.random() < moveChance)
+                move(x - getCell().getX(), y - getCell().getY(), CellType.FLOOR);
+        }
     }
 }

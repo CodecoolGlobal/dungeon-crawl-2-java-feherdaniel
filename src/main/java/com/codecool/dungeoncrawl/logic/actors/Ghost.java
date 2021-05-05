@@ -34,7 +34,7 @@ public class Ghost extends Actor {
             int[] targetOffset = offsets[(int)(Math.random() * 4)];
             Cell target = getCell().getNeighbour(targetOffset[0], targetOffset[1]);
             if (target.getActor() == null)
-                move(targetOffset[0], targetOffset[1], CellType.FLOOR, CellType.WALL);
+                move(targetOffset[0], targetOffset[1], CellType.FLOOR, CellType.WALL, CellType.DOOR, CellType.OPEN_DOOR);
         }
     }
 
