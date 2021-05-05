@@ -34,8 +34,12 @@ public class Main extends Application {
     Label firstItem = new Label();
     Label inventory = new Label();
     Label damageLabel = new Label();
+    Label nameLabel = new Label();
+    static String name;
 
     public static void main(String[] args) {
+        if (args.length > 0) name = args[0];
+        else name = "Player";
         launch(args);
     }
 
@@ -139,7 +143,7 @@ public class Main extends Application {
                 }
             }
         }
-        healthLabel.setText("" + map.getPlayer().getHealth());
+        healthLabel.setText("" + map.getPlayer().getHealth() + "/" + map.getPlayer().getMaxHealth());
         firstItem.setText("" + map.getPlayer().getFirstItem());
         inventory.setText("" + map.getPlayer().getInventory());
         damageLabel.setText("" + map.getPlayer().getDmg());
