@@ -31,6 +31,8 @@ public abstract class Actor implements Drawable {
 
     public void setDmg(int dmg) { this.dmg = dmg; }
     public int getDmg() { return dmg; }
+    public void setArmour(int armour) { this.armour = armour; }
+    public int getArmour() { return armour; }
 
     /**
      * Signal to the game engine that this Actor should be able to participate in combat

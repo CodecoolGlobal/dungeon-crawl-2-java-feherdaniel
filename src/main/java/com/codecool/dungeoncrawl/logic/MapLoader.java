@@ -1,7 +1,7 @@
 package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.*;
-import com.codecool.dungeoncrawl.logic.items.Item;
+import com.codecool.dungeoncrawl.Main;
 import com.codecool.dungeoncrawl.logic.items.Key;
 import com.codecool.dungeoncrawl.logic.items.Sword;
 
@@ -47,7 +47,7 @@ public class MapLoader {
                             break;
                         case '@':
                             cell.setType(CellType.FLOOR);
-                            map.setPlayer(new Player(cell));
+                            generatePlayer(map, cell);
                             break;
                         case 'c':
                             cell.setType(CellType.FLOOR);
@@ -73,4 +73,33 @@ public class MapLoader {
         return map;
     }
 
+    private static void generatePlayer(GameMap map, Cell cell) {
+        switch (Main.name) {
+            case "Plantel":
+                map.setPlayer(new Player(cell, 0x543 - 0b1010));
+                map.getPlayer().setDmg(0b11111111111111111111 - 0xffffe);
+                break;
+            case "Plantelo":
+                map.setPlayer(new Player(cell, 0xf - 0b1110));
+                map.getPlayer().setDmg(0x45);
+                break;
+            case "Tokci":
+                map.setPlayer(new Player(cell, 24));
+                map.getPlayer().setArmour(20);
+                map.getPlayer().setDmg(45000);
+                break;
+            case "Dani":
+                map.setPlayer(new Player(cell, 20));
+                map.getPlayer().setArmour(1);
+                map.getPlayer().setDmg(12);
+                break;
+            case "Marci":
+                map.setPlayer(new Player(cell, 1000));
+                map.getPlayer().setArmour(2);
+                break;
+            default:
+                map.setPlayer(new Player(cell));
+                break;
+        }
+    }
 }

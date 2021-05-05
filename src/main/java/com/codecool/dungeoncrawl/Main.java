@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
+import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -26,16 +27,20 @@ import java.util.List;
 
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
+    final static int maxWidth = 12;
     Canvas canvas = new Canvas(
-            map.getWidth() * Tiles.TILE_WIDTH,
-            map.getHeight() * Tiles.TILE_WIDTH);
+            Math.min(map.getWidth() * Tiles.TILE_WIDTH, (viewDeltaH * 2 + 1) * Tiles.TILE_WIDTH),
+            Math.min(map.getHeight() * Tiles.TILE_WIDTH, (viewDeltaV * 2 + 1) * Tiles.TILE_WIDTH));
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
     Label firstItem = new Label();
     Label inventory = new Label();
     Label damageLabel = new Label();
     Label nameLabel = new Label();
-    static String name;
+    public static String name;
+    final static int viewDistance = 12;
+    final static int viewDeltaH = 12;
+    final static int viewDeltaV = 9;
 
     public static void main(String[] args) {
         if (args.length > 0) name = args[0];
@@ -131,15 +136,21 @@ public class Main extends Application {
                     actors.add(map.getCell(i, j).getActor());
         for (Actor a : actors)
             a.onRefresh();
-        for (int x = 0; x < map.getWidth(); x++) {
-            for (int y = 0; y < map.getHeight(); y++) {
+
+        int minX = Math.max(map.getPlayer().getX() - viewDeltaH, 0);
+        int minY = Math.max(map.getPlayer().getY() - viewDeltaV, 0);
+        int maxX = Math.min(map.getWidth(), map.getPlayer().getX() + viewDeltaH);
+        int maxY = Math.min(map.getHeight(), map.getPlayer().getY() + viewDeltaV);
+
+        for (int x = minX; x < maxX; x++) {
+            for (int y = minY; y < maxY; y++) {
                 Cell cell = map.getCell(x, y);
                 if (cell.getActor() != null) {
-                    Tiles.drawTile(context, cell.getActor(), x, y);
+                    Tiles.drawTile(context, cell.getActor(), x - minX, y -minY);
                 } else if (cell.getItem() != null) {
-                    Tiles.drawTile(context, cell.getItem(), x, y);
+                    Tiles.drawTile(context, cell.getItem(),x - minX, y -minY);
                 } else {
-                    Tiles.drawTile(context, cell, x, y);
+                    Tiles.drawTile(context, cell,x - minX, y -minY);
                 }
             }
         }

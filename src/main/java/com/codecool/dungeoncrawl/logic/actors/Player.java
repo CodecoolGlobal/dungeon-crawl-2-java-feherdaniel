@@ -14,6 +14,11 @@ public class Player extends Actor {
     public Player(Cell cell) {
         super(cell);
     }
+    public Player(Cell cell, int maxHealth) {
+        super(cell, maxHealth);
+    }
+
+
 
     public String getInventory() {
         StringBuilder sb = new StringBuilder("");
