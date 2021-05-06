@@ -54,12 +54,13 @@ public abstract class Actor implements Drawable {
      * @param dy Relative (signed) vertical offset
      */
     public void move(int dx, int dy) {
-        if (cell.getNeighbour(dx, dy).getType() != CellType.WALL && cell.getNeighbour(dx, dy).getType() != CellType.DOOR &&
-                cell.getNeighbour(dx, dy).getActor() == null) {
-            Cell nextCell = cell.getNeighbour(dx, dy);
+        Cell targetCell = cell.getNeighbour(dx, dy);
+        if (targetCell == null) return;
+        if (targetCell.getType() != CellType.WALL && targetCell.getType() != CellType.DOOR &&
+                targetCell.getActor() == null) {
             cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
+            targetCell.setActor(this);
+            cell = targetCell;
         }
     }
 
@@ -135,6 +136,10 @@ public abstract class Actor implements Drawable {
      */
     public void attack(int dx, int dy) {
         Actor target = cell.getNeighbour(dx, dy).getActor();
+        if (target != null && target.isEnemy() != this.isEnemy())
+            target.damage(dmg);
+    }
+    public void attack(Actor target) {
         if (target != null && target.isEnemy() != this.isEnemy())
             target.damage(dmg);
     }

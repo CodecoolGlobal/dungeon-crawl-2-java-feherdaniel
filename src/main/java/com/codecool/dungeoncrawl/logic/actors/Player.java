@@ -2,9 +2,8 @@ package com.codecool.dungeoncrawl.logic.actors;
 
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
-import com.codecool.dungeoncrawl.logic.items.Item;
-import com.codecool.dungeoncrawl.logic.items.Key;
-import com.codecool.dungeoncrawl.logic.items.Sword;
+import com.codecool.dungeoncrawl.logic.items.*;
+import com.codecool.dungeoncrawl.logic.MapLoader;
 
 import java.util.ArrayList;
 
@@ -45,11 +44,20 @@ public class Player extends Actor {
     }
 
     public void addToInventory(Item item) {
-        inventory.add(item);
         if (item instanceof Sword) {
             if (((Sword)item).getDamage() > getDmg())
                 setDmg( ((Sword) item).getDamage() );
         }
+        if (item instanceof Potion) {
+            heal(((Potion)item).getHealth());
+        }
+        else inventory.add(item);
+    }
+
+    @Override
+    public void die() {
+        cell.setActor(null);
+        MapLoader.onPlayerDeath();
     }
 
     @Override

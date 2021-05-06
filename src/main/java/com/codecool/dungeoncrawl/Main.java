@@ -38,9 +38,10 @@ public class Main extends Application {
     Label damageLabel = new Label();
     Label nameLabel = new Label();
     public static String name;
-    final static int viewDistance = 12;
     final static int viewDeltaH = 12;
     final static int viewDeltaV = 9;
+    static boolean restartFlag = false;
+    public static void setRestartFlag() { restartFlag = true; }
 
     public static void main(String[] args) {
         if (args.length > 0) name = args[0];
@@ -142,6 +143,11 @@ public class Main extends Application {
         int maxX = Math.min(map.getWidth(), map.getPlayer().getX() + viewDeltaH);
         int maxY = Math.min(map.getHeight(), map.getPlayer().getY() + viewDeltaV);
 
+        if (minX == 0) maxX = Math.min(2 * viewDeltaH + 1, map.getWidth() - 1);
+        if (minY == 0) maxY = Math.min(2 * viewDeltaV + 1, map.getHeight() - 1);
+        if (maxX == map.getWidth() - 1) minX = Math.max(map.getWidth() - 2 - viewDeltaH  * 2, 0);
+        if (maxY == map.getHeight() - 1) minY = Math.max(map.getHeight() - 2 - viewDeltaV * 2, 0);
+
         for (int x = minX; x < maxX; x++) {
             for (int y = minY; y < maxY; y++) {
                 Cell cell = map.getCell(x, y);
@@ -159,7 +165,8 @@ public class Main extends Application {
         inventory.setText("" + map.getPlayer().getInventory());
         damageLabel.setText("" + map.getPlayer().getDmg());
 
-        if (map.nextLevel()) {
+        if (map.nextLevel() || restartFlag) {
+            restartFlag = false;
             map = MapLoader.loadMap();
             refresh();
         }

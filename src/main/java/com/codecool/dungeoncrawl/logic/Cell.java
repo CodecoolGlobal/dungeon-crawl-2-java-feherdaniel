@@ -4,6 +4,9 @@ import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.items.Item;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class Cell implements Drawable {
     private CellType type;
     private Actor actor;
@@ -34,7 +37,10 @@ public class Cell implements Drawable {
      * @return Cell object at specified offset
      */
     public Cell getNeighbour(int dx, int dy) {
-        return gameMap.getCell(x + dx, y + dy);
+        if (x + dx < gameMap.getWidth() && x + dx >= 0)
+            if (y + dy < gameMap.getHeight() && y + dy >= 0)
+                return gameMap.getCell(x + dx, y + dy);
+        return null;
     }
 
     @Override

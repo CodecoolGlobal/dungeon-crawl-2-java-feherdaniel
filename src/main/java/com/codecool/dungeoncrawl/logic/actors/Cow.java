@@ -19,7 +19,9 @@ public class Cow extends Actor {
     public void onRefresh() {
         int[][] offsets = { {-1, 0}, {1, 0}, {0, 1}, {0, -1}};
         for (int[] offset : offsets) {
-            Actor target = getCell().getNeighbour(offset[0], offset[1]).getActor();
+            Cell targetCell = cell.getNeighbour(offset[0], offset[1]);
+            if (targetCell == null) break;
+            Actor target = targetCell.getActor();
             if (target != null && target.getClass() == Player.class && getHealth() < getMaxHealth()) {
                 attack(offset[0], offset[1]);
                 break;

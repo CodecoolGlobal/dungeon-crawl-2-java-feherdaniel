@@ -4,7 +4,7 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 
 public class Skeleton extends Actor {
-    private final double moveChance = 0.5;
+    private final double moveChance = 0.125;
 
     public Skeleton(Cell cell) {
         super(cell);
@@ -22,10 +22,12 @@ public class Skeleton extends Actor {
         int[][] offsets = { {-1, 0}, {1, 0}, {0, 1}, {0, -1}};
         boolean attackDone = false;
         for (int[] offset : offsets) {
-            Actor target = getCell().getNeighbour(offset[0], offset[1]).getActor();
+            Cell targetCell = cell.getNeighbour(offset[0], offset[1]);
+            if (targetCell == null) break;
+            Actor target = targetCell.getActor();
             if (target != null && target.getClass() == Player.class) {
                 attackDone = true;
-                attack(offset[0], offset[1]);
+                attack(target);
                 break;
             }
         }
@@ -33,7 +35,7 @@ public class Skeleton extends Actor {
             if (Math.random() < moveChance) return;
             int[] targetOffset = offsets[(int)(Math.random() * 4)];
             Cell target = getCell().getNeighbour(targetOffset[0], targetOffset[1]);
-            if (target.getActor() == null)
+            if (target != null)
                 move(targetOffset[0], targetOffset[1], CellType.FLOOR);
         }
     }

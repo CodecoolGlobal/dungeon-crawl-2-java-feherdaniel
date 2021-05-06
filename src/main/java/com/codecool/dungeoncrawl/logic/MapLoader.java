@@ -2,8 +2,7 @@ package com.codecool.dungeoncrawl.logic;
 
 import com.codecool.dungeoncrawl.logic.actors.*;
 import com.codecool.dungeoncrawl.Main;
-import com.codecool.dungeoncrawl.logic.items.Key;
-import com.codecool.dungeoncrawl.logic.items.Sword;
+import com.codecool.dungeoncrawl.logic.items.*;
 
 import java.io.InputStream;
 import java.util.Objects;
@@ -77,6 +76,17 @@ public class MapLoader {
                         case 'x':
                             cell.setType(CellType.EXIT);
                             break;
+                        case 'p':
+                            cell.setType(CellType.FLOOR);
+                            new Potion(cell);
+                            break;
+                        case 'f':
+                            cell.setType(CellType.FAKE_WALL);
+                            break;
+                        case 'l':
+                            cell.setType(CellType.FLOOR);
+                            new BFSword(cell);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }
@@ -90,9 +100,6 @@ public class MapLoader {
         if (Objects.isNull(player)) {
             switch (Main.name) {
                 case "Plantel":
-                    map.setPlayer(new Player(cell, 0x543 - 0b1010));
-                    map.getPlayer().setDmg(0b11111111111111111111 - 0xffffe);
-                    break;
                 case "Plantelo":
                     map.setPlayer(new Player(cell, 0xf - 0b1110));
                     map.getPlayer().setDmg(0x45);
@@ -120,5 +127,11 @@ public class MapLoader {
             player.setCell(cell);
             map.setPlayer(player);
         }
+    }
+
+    public static void onPlayerDeath() {
+        counter = 0;
+        player = null;
+        Main.setRestartFlag();
     }
 }
