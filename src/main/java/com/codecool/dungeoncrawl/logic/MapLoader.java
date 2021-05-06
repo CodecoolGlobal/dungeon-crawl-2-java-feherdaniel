@@ -10,9 +10,13 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class MapLoader {
+    private static int counter = 0;
+    private static Player player;
 
     public static GameMap loadMap() {
-        InputStream is = MapLoader.class.getResourceAsStream("/map.txt");
+        String[] maps = {/*"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt",*/ "/map5.txt","/win.txt"};
+        InputStream is = MapLoader.class.getResourceAsStream(maps[counter]);
+        counter++;
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
