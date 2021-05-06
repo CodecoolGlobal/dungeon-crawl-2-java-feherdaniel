@@ -95,8 +95,8 @@ public class MapLoader {
                     break;
                 case "Tokci":
                     map.setPlayer(new Player(cell, 24));
-                    map.getPlayer().setArmour(20);
-                    map.getPlayer().setDmg(45000);
+                    map.getPlayer().setArmour(2);
+                    map.getPlayer().setDmg(4);
                     break;
                 case "Dani":
                     map.setPlayer(new Player(cell, 20));
