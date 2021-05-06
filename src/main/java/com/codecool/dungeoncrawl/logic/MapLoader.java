@@ -6,6 +6,7 @@ import com.codecool.dungeoncrawl.logic.items.Key;
 import com.codecool.dungeoncrawl.logic.items.Sword;
 
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class MapLoader {
@@ -49,6 +50,7 @@ public class MapLoader {
                         case '@':
                             cell.setType(CellType.FLOOR);
                             generatePlayer(map, cell);
+                            player = map.getPlayer();
                             break;
                         case 'c':
                             cell.setType(CellType.FLOOR);
@@ -65,6 +67,9 @@ public class MapLoader {
                         case 'd':
                             cell.setType(CellType.DOOR);
                             break;
+                        case 'b':
+                            cell.setType(CellType.OPEN_DOOR);
+                            break;
                         case 'x':
                             cell.setType(CellType.EXIT);
                             break;
@@ -78,32 +83,38 @@ public class MapLoader {
     }
 
     private static void generatePlayer(GameMap map, Cell cell) {
-        switch (Main.name) {
-            case "Plantel":
-                map.setPlayer(new Player(cell, 0x543 - 0b1010));
-                map.getPlayer().setDmg(0b11111111111111111111 - 0xffffe);
-                break;
-            case "Plantelo":
-                map.setPlayer(new Player(cell, 0xf - 0b1110));
-                map.getPlayer().setDmg(0x45);
-                break;
-            case "Tokci":
-                map.setPlayer(new Player(cell, 24));
-                map.getPlayer().setArmour(20);
-                map.getPlayer().setDmg(45000);
-                break;
-            case "Dani":
-                map.setPlayer(new Player(cell, 20));
-                map.getPlayer().setArmour(1);
-                map.getPlayer().setDmg(12);
-                break;
-            case "Marci":
-                map.setPlayer(new Player(cell, 1000));
-                map.getPlayer().setArmour(2);
-                break;
-            default:
-                map.setPlayer(new Player(cell));
-                break;
+        if (Objects.isNull(player)) {
+            switch (Main.name) {
+                case "Plantel":
+                    map.setPlayer(new Player(cell, 0x543 - 0b1010));
+                    map.getPlayer().setDmg(0b11111111111111111111 - 0xffffe);
+                    break;
+                case "Plantelo":
+                    map.setPlayer(new Player(cell, 0xf - 0b1110));
+                    map.getPlayer().setDmg(0x45);
+                    break;
+                case "Tokci":
+                    map.setPlayer(new Player(cell, 24));
+                    map.getPlayer().setArmour(20);
+                    map.getPlayer().setDmg(45000);
+                    break;
+                case "Dani":
+                    map.setPlayer(new Player(cell, 20));
+                    map.getPlayer().setArmour(1);
+                    map.getPlayer().setDmg(12);
+                    break;
+                case "Marci":
+                    map.setPlayer(new Player(cell, 1000));
+                    map.getPlayer().setArmour(2);
+                    break;
+                default:
+                    map.setPlayer(new Player(cell));
+                    break;
+            }
+        }
+        else {
+            player.setCell(cell);
+            map.setPlayer(player);
         }
     }
 }

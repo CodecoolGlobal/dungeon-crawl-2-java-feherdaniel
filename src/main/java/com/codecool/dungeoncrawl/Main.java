@@ -160,7 +160,8 @@ public class Main extends Application {
         damageLabel.setText("" + map.getPlayer().getDmg());
 
         if (map.nextLevel()) {
-            System.out.println("Nice");
+            map = MapLoader.loadMap();
+            refresh();
         }
     }
 }
