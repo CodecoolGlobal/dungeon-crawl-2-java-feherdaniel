@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic.actors;
 
+import com.codecool.dungeoncrawl.Main;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.*;
@@ -9,6 +10,10 @@ import java.util.ArrayList;
 
 public class Player extends Actor {
     public ArrayList<Item> inventory = new ArrayList<>();
+
+    private String name = Main.launchName;
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
     public Player(Cell cell) {
         super(cell);

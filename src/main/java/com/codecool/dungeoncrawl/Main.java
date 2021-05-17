@@ -7,11 +7,13 @@ import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -36,16 +38,17 @@ public class Main extends Application {
     Label firstItem = new Label();
     Label inventory = new Label();
     Label damageLabel = new Label();
-    Label nameLabel = new Label();
-    public static String name;
+    Button nameLabel = new Button();
+    TextField nameChangeLabel;
+    //TextField
+    public static String launchName;
     final static int viewDeltaH = 12;
     final static int viewDeltaV = 9;
     static boolean restartFlag = false;
     public static void setRestartFlag() { restartFlag = true; }
 
     public static void main(String[] args) {
-        if (args.length > 0) name = args[0];
-        else name = "Player";
+        launchName = args.length > 0 ? args[0] : "Player";
         launch(args);
     }
 
@@ -55,39 +58,49 @@ public class Main extends Application {
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
-        nameLabel.setText(name);
+        nameLabel.setText(launchName);
         ui.add(new Label("Name: "), 0, 0);
         ui.add(nameLabel, 1, 0);
 
-        ui.add(new Label(" "),0,1);
+        ui.addRow(1);
+        ui.addRow(2);
 
-        Button button = new Button("Pick up item");
-
-        button.setOnAction(value ->  {
-            map.pickUpItem();
-            refresh();
+        nameLabel.setOnAction(value -> {
+            if (nameLabel.isFocusTraversable()) {
+                map.getPlayer().setName(nameChangeLabel.getText());
+                nameLabel.setText(nameChangeLabel.getText());
+                ui.getChildren().remove(nameChangeLabel);
+                nameChangeLabel.setFocusTraversable(false);
+                nameChangeLabel = null;
+                nameLabel.setFocusTraversable(false);
+                ui.requestFocus();
+            } else {
+                nameChangeLabel = new TextField();
+                nameChangeLabel.setText(nameLabel.getText());
+                ui.add(nameChangeLabel, 1, 2);
+                nameLabel.setText("Rename");
+                nameLabel.setFocusTraversable(true);
+            }
         });
 
 
-        button.setFocusTraversable(false);
-        ui.add(button, 0, 2);
+        nameLabel.setFocusTraversable(false);
 
-        ui.add(new Label(" "),0,2);
-        ui.add(new Label(" "),0,3);
+        ui.add(new Label(" "),0,4);
 
-        ui.add(new Label("Health: "), 0, 4);
-        ui.add(healthLabel, 1, 4);
+        ui.add(new Label("Health: "), 0, 5);
+        ui.add(healthLabel, 1, 5);
 
 
-        ui.add(new Label("Damage: "), 0, 5);
-        ui.add(damageLabel, 1,5);
+        ui.add(new Label("Damage: "), 0, 6);
+        ui.add(damageLabel, 1,6);
 
-        ui.add(new Label(" "),0,6);
+        ui.add(new Label(" "),0,7);
 
-        ui.add(new Label("Inventory: "),0, 7);
-        ui.add(firstItem, 1,7);
+        ui.add(new Label("Inventory: "),0, 8);
+        ui.add(firstItem, 1,8);
 
-        ui.add(inventory, 1, 8);
+        ui.add(inventory, 1, 9);
 
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(canvas);
@@ -122,6 +135,10 @@ public class Main extends Application {
             case RIGHT:
                 map.getPlayer().move(1,0);
                 map.getPlayer().attack(1, 0);
+                refresh();
+                break;
+            case SPACE:
+                map.pickUpItem();
                 refresh();
                 break;
         }
