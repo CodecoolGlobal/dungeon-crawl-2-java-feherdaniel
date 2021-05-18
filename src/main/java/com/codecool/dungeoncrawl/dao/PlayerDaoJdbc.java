@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.model.PlayerModel;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerDaoJdbc implements PlayerDao {
@@ -33,16 +34,53 @@ public class PlayerDaoJdbc implements PlayerDao {
 
     @Override
     public void update(PlayerModel player) {
-
+        try (Connection conn = dataSource.getConnection()) {
+            String sql = "UPDATE player SET player_name = ?, hp = ?, x = ?, y = ? WHERE id = ?";
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, player.getPlayerName());
+            statement.setInt(2, player.getHp());
+            statement.setInt(3, player.getX());
+            statement.setInt(4, player.getY());
+            statement.setInt(5, player.getId());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public PlayerModel get(int id) {
-        return null;
+        try (Connection conn = dataSource.getConnection()) {
+            String sql = "SELECT player_name, hp, x, y FROM player WHERE id = ?";
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1, id);
+            ResultSet rs = st.executeQuery();
+            if (!rs.next()) { // first row was not found == no data was returned by the query
+                return null;
+            }
+            PlayerModel playerModel = new PlayerModel(rs.getString(1), rs.getInt(2), rs.getInt(3), rs.getInt(4));
+            playerModel.setId(id); // we already knew author id, so we do not read it from database.
+            return playerModel;
+        }
+        catch(SQLException e){
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public List<PlayerModel> getAll() {
-        return null;
+        try (Connection conn = dataSource.getConnection()) {
+            String sql = "SELECT id, player_name, hp, x, y FROM player";
+            ResultSet rs = conn.createStatement().executeQuery(sql);
+            List<PlayerModel> result = new ArrayList<>();
+            while (rs.next()) { // while result set pointer is positioned before or on last row read authors
+                PlayerModel playerModel = new PlayerModel(rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+                playerModel.setId(rs.getInt(1));
+                result.add(playerModel);
+            }
+            return result;
+        } catch (SQLException e) {
+            throw new RuntimeException("Error while reading all authors", e);
+        }
     }
 }

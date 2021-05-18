@@ -8,8 +8,9 @@ public class PlayerModel extends BaseModel {
     private int x;
     private int y;
 
-    public PlayerModel(String playerName, int x, int y) {
+    public PlayerModel(String playerName, int hp, int x, int y) {
         this.playerName = playerName;
+        this.hp = hp;
         this.x = x;
         this.y = y;
     }
