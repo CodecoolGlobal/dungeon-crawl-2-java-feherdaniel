@@ -135,9 +135,11 @@ public abstract class Actor implements Drawable {
      * @param dy Relative (signed) vertical offset
      */
     public void attack(int dx, int dy) {
-        Actor target = cell.getNeighbour(dx, dy).getActor();
-        if (target != null && target.isEnemy() != this.isEnemy())
-            target.damage(dmg);
+        if (cell.getNeighbour(dx, dy) != null) {
+            Actor target = cell.getNeighbour(dx, dy).getActor();
+            if (target != null && target.isEnemy() != this.isEnemy())
+                target.damage(dmg);
+        }
     }
     public void attack(Actor target) {
         if (target != null && target.isEnemy() != this.isEnemy())

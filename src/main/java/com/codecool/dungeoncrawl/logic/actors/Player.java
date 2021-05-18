@@ -67,25 +67,27 @@ public class Player extends Actor {
 
     @Override
     public void move(int dx, int dy) {
-        if (cell.getNeighbour(dx, dy).getType() != CellType.WALL && cell.getNeighbour(dx, dy).getType() != CellType.DOOR &&
-                cell.getNeighbour(dx, dy).getActor() == null) {
-            Cell nextCell = cell.getNeighbour(dx, dy);
-            cell.setActor(null);
-            nextCell.setActor(this);
-            cell = nextCell;
-        }
-        else if (cell.getNeighbour(dx, dy).getType() == CellType.DOOR) {
-            for (Item item: inventory) {
-                if (item instanceof Key) {
-                    Cell nextCell = cell.getNeighbour(dx, dy);
-                    cell.setActor(null);
-                    nextCell.setActor(this);
-                    cell = nextCell;
-                    inventory.remove(item);
-                    cell.setType(CellType.OPEN_DOOR);
-                    break;
+        try {
+            if (cell.getNeighbour(dx, dy).getType() != CellType.WALL && cell.getNeighbour(dx, dy).getType() != CellType.DOOR &&
+                    cell.getNeighbour(dx, dy).getActor() == null) {
+                Cell nextCell = cell.getNeighbour(dx, dy);
+                cell.setActor(null);
+                nextCell.setActor(this);
+                cell = nextCell;
+            } else if (cell.getNeighbour(dx, dy).getType() == CellType.DOOR) {
+                for (Item item : inventory) {
+                    if (item instanceof Key) {
+                        Cell nextCell = cell.getNeighbour(dx, dy);
+                        cell.setActor(null);
+                        nextCell.setActor(this);
+                        cell = nextCell;
+                        inventory.remove(item);
+                        cell.setType(CellType.OPEN_DOOR);
+                        break;
+                    }
                 }
             }
         }
+        catch (NullPointerException ignored){}
     }
 }
