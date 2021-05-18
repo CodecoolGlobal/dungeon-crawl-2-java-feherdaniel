@@ -11,3 +11,6 @@ target
 .idea/
 target/
 dungeon-crawl.iml
+
+# Debugging purposes
+debug/
