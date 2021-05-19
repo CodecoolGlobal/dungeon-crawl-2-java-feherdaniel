@@ -1,5 +1,8 @@
 package com.codecool.dungeoncrawl.logic;
 
+import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
+import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,6 +75,19 @@ class ActorTest {
         assertEquals(0, skeleton.getArmour());
         skeleton.setArmour(5);
         assertEquals(5, skeleton.getArmour());
+    }
+
+    @Test
+    void getArmour_correctArmour() {
+        Player player = new Player(gameMap.getCell(1, 1));
+        assertEquals(0, player.getArmour());
+    }
+
+    @Test
+    void setArmour_correctArmour() {
+        Player player = new Player(gameMap.getCell(1, 1));
+        player.setArmour(3);
+        assertEquals(3, player.getArmour());
     }
 
     @Test
