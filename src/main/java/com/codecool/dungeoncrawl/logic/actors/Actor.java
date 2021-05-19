@@ -44,7 +44,7 @@ public abstract class Actor implements Drawable {
      * Function that enables Actors to react to passage of time
      * or movement of player
      */
-    public void onRefresh() {}
+    public void onRefresh() {};
 
     /**
      * Move Actor by some horizontal and vertical offset, optionally defining all cells that
