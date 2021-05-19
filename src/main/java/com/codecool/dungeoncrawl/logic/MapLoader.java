@@ -139,7 +139,7 @@ public class MapLoader {
     }
 
     public static void onPlayerDeath() {
-        counter = 0;
+        level = 0;
         player = null;
         Main.setRestartFlag();
     }
