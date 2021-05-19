@@ -9,7 +9,7 @@ import com.codecool.dungeoncrawl.logic.MapLoader;
 import java.util.ArrayList;
 
 public class Player extends Actor {
-    public ArrayList<Item> inventory = new ArrayList<>();
+    private ArrayList<Item> inventory = new ArrayList<>();
 
     private String name = Main.launchName;
     public String getName() { return name; }
@@ -22,14 +22,12 @@ public class Player extends Actor {
         super(cell, maxHealth);
     }
 
-
-
     public String getInventory() {
         StringBuilder sb = new StringBuilder("");
         for (Item item: inventory) {
-            if (item != inventory.get(0)) {
+           if (item != inventory.get(0)) {
                 sb.append(item.getTileName() + "\n");
-            }
+           }
         }
         return sb.toString();
     }
