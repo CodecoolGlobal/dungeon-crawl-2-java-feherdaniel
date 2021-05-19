@@ -12,10 +12,19 @@ public class MapLoader {
     private static int counter = 0;
     private static Player player;
 
-    public static GameMap loadMap() {
+    public static GameMap loadNextMap() {
         String[] maps = {/*"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt",*/ "/map5.txt","/win.txt"};
-        InputStream is = MapLoader.class.getResourceAsStream(maps[counter]);
+        GameMap map = loadMap(maps[counter]);
         counter++;
+        return map;
+    }
+
+    public void loadGameStateMap() {
+
+    }
+
+    public static GameMap loadMap(String mapString) {
+        InputStream is = MapLoader.class.getResourceAsStream(mapString);
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
