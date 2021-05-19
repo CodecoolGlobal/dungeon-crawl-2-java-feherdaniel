@@ -21,7 +21,9 @@ public class LogManager {
         FileOutputStream logFileWriter = null;
         try {
             logFileWriter = new FileOutputStream(logFileName, true);
-        } catch (IOException ignored) {}  // realistically shouldn't happen
+        } catch (IOException ioe) {
+            logFileWriter = new FileOutputStream(logFileName);
+        }  // realistically shouldn't happen
         logFileWriter.write(String.format( "[%s]: %s%n", new Date().toString().substring(4, 19), message ).getBytes());
         logFileWriter.close();
     }
