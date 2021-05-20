@@ -9,11 +9,12 @@ import com.codecool.dungeoncrawl.model.GameState;
 import com.codecool.dungeoncrawl.model.PlayerModel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Player extends Actor {
 
-    private ArrayList<Item> inventory = new ArrayList<>();
+    private List<Item> inventory = new ArrayList<>();
     private int level;
     private String name = Main.launchName;
     public String getName() { return name; }
@@ -26,9 +27,20 @@ public class Player extends Actor {
         super(cell, maxHealth);
     }
 
-//    public Player(GameState gameState) {
-//        super(cell, maxHealth);
-//    }
+    public Player(Cell cell, String name, int hp, String inventory, int maxHealth) {
+        super(cell, maxHealth);
+        this.name = name;
+        setHealth(hp);
+        for (String text: inventory.split(", ")) {
+            if (text.equals("sword")) {
+                this.inventory.add(new Sword(cell));
+            } else if (text.equals("bfsword")) {
+                this.inventory.add(new BFSword(cell));
+            } else if (text.equals("key")) {
+                this.inventory.add(new Key(cell));
+            }
+        }
+    }
 
 
 

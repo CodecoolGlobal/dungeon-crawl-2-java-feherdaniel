@@ -4,6 +4,7 @@ import com.codecool.dungeoncrawl.Main;
 import com.codecool.dungeoncrawl.dao.GameDatabaseManager;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.model.GameState;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,9 +21,10 @@ import java.sql.SQLException;
 public class LoadModal {
     private static final String title = "Load";
     private static final int width = 300;
-    private static final int height = 40;
+    private static final int height = 70;
     public static String mapLoad = "";
     public static int level = 0;
+    public static Player playerLoad;
 
     public static void loadMap(Stage stage, GameMap map) {
         GameMap loadedMap;
@@ -70,12 +72,9 @@ public class LoadModal {
             var state = gdbm.loadGameState(allStates.get(i).getId());
             var newPlayer = gdbm.getPlayer(allStates.get(i).getId());
             id.setOnAction(e -> {
-                MapLoader mp = new MapLoader();
-//                Main main = new Main();
                 mapLoad = state.getCurrentMap();
                 level = state.getLevel();
-//                main.setMap(mp.loadGameStateMap(state.getLevel(), state.getCurrentMap()));
-//                main.refresh();
+                playerLoad = new Player(map.getCell(newPlayer.getX(), newPlayer.getY()), newPlayer.getPlayerName(), newPlayer.getHp(), newPlayer.getInventory(), newPlayer.getMaxHp());
                 modal.close();
             });
         }

@@ -167,6 +167,8 @@ public class Main extends Application {
         if (loadCombination.match(keyEvent)) {
             LoadModal.loadMap(stage, map);
             map = MapLoader.loadGameStateMap(LoadModal.level, LoadModal.mapLoad);
+            MapLoader.generatePlayer(map, LoadModal.playerLoad.getCell());
+            map.setPlayer(LoadModal.playerLoad);
             refresh();
         }
     }
