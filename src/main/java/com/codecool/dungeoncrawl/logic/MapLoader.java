@@ -9,13 +9,25 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class MapLoader {
-    private static int counter = 0;
+    private static int level = 0;
     private static Player player;
+    private static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt",  "/map4.txt", "/map5.txt","/win.txt"};
 
-    public static GameMap loadMap() {
-        String[] maps = {/*"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt",*/ "/map5.txt","/win.txt"};
-        InputStream is = MapLoader.class.getResourceAsStream(maps[counter]);
-        counter++;
+    public static GameMap loadNextMap() {
+        GameMap map = loadMap(maps[level]);
+        level++;
+        return map;
+    }
+
+    public GameMap loadGameStateMap(int level, String mapText) {
+        GameMap map = loadMap(mapText);
+        this.level = level+1;
+        return map;
+    }
+
+    public static GameMap loadMap(String mapString) {
+        InputStream is = MapLoader.class.getResourceAsStream(mapString);
+
         Scanner scanner = new Scanner(is);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
@@ -130,7 +142,7 @@ public class MapLoader {
     }
 
     public static void onPlayerDeath() {
-        counter = 0;
+        level = 0;
         player = null;
         Main.setRestartFlag();
     }

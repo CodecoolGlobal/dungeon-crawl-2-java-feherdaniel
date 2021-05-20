@@ -28,7 +28,7 @@ import java.util.List;
 
 
 public class Main extends Application {
-    GameMap map = MapLoader.loadMap();
+    GameMap map = MapLoader.loadNextMap();
     final static int maxWidth = 12;
     Canvas canvas = new Canvas(
             Math.min(map.getWidth() * Tiles.TILE_WIDTH, (viewDeltaH * 2 + 1) * Tiles.TILE_WIDTH),
@@ -184,7 +184,7 @@ public class Main extends Application {
 
         if (map.nextLevel() || restartFlag) {
             restartFlag = false;
-            map = MapLoader.loadMap();
+            map = MapLoader.loadNextMap();
             refresh();
         }
     }
