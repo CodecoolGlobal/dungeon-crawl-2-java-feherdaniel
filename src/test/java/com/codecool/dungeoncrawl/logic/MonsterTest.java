@@ -28,7 +28,8 @@ public class MonsterTest {
 
     @Test
     void skeleton_onRefresh_moves() {
-        Cell cell = gameMap.getCell(1, 1);
+        GameMap bigMap = new GameMap(100, 100, CellType.FLOOR);
+        Cell cell = bigMap.getCell(1, 1);
         Skeleton skeleton = new Skeleton(cell);
         for (int i = 0; i < 100; i++) {
             skeleton.onRefresh();
@@ -38,8 +39,7 @@ public class MonsterTest {
 
     @Test
     void skeleton_onRefresh_attacks() {
-        GameMap bigMap = new GameMap(100, 100, CellType.FLOOR);
-        Cell cell = bigMap.getCell(1, 1);
+        Cell cell = gameMap.getCell(1, 1);
         Cell playerCell = gameMap.getCell(1, 2);
         Player player = new Player(playerCell);
         Skeleton skeleton = new Skeleton(cell);
