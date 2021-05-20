@@ -13,7 +13,7 @@ public class MapLoader {
     private static Player player;
 
     public static GameMap loadMap() {
-        String[] maps = {/*"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt",*/ "/map5.txt","/win.txt"};
+        String[] maps = {"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt", "/map5.txt","/win.txt"};
         InputStream is = MapLoader.class.getResourceAsStream(maps[counter]);
         counter++;
         Scanner scanner = new Scanner(is);
