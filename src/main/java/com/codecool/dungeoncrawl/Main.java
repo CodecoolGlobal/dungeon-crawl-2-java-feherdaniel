@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.util.SaveModal;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -14,9 +15,13 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -28,6 +33,7 @@ import java.util.List;
 
 
 public class Main extends Application {
+    private Stage stage;
     GameMap map = MapLoader.loadNextMap();
     final static int maxWidth = 12;
     Canvas canvas = new Canvas(
@@ -105,11 +111,13 @@ public class Main extends Application {
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(canvas);
         borderPane.setRight(ui);
+        this.stage = primaryStage;
 
         Scene scene = new Scene(borderPane);
         primaryStage.setScene(scene);
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
+        scene.setOnKeyReleased(this::onKeyReleased);
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
@@ -142,6 +150,35 @@ public class Main extends Application {
                 refresh();
                 break;
         }
+    }
+
+    private void onKeyReleased(KeyEvent keyEvent) {
+        KeyCombination saveCombination = new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN);
+        if (saveCombination.match(keyEvent)) {
+            SaveModal.display(stage, map);
+        }
+    }
+    public static void saveModal() {
+        int modalWidth = 250;
+        String modalText = "Do you want to save?";
+        Stage saveWindow = new Stage();
+        saveWindow.setTitle("Save");
+        saveWindow.setWidth(modalWidth);
+
+        Label label = new Label();
+        label.setText(modalText);
+
+        Button saveButton = new Button("Save");
+        saveButton.setOnAction(e -> {
+            /*save()*/
+            saveWindow.close();
+        });
+        Button cancelButton = new Button ("Cancel");
+        cancelButton.setOnAction(e -> {
+            /*cancel()*/
+            saveWindow.close();
+        });
+
     }
 
     private void refresh() {

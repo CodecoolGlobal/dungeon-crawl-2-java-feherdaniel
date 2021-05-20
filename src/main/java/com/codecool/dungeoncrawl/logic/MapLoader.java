@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MapLoader {
     private static int level = 0;
     private static Player player;
-    private static String[] maps = {/*"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt",*/ "/map5.txt","/win.txt"};
+    private static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt", "/map5.txt","/win.txt"};
 
     public static GameMap loadNextMap() {
         GameMap map = loadMap(maps[level]);

@@ -14,7 +14,7 @@ import java.util.List;
 public class Player extends Actor {
 
     private ArrayList<Item> inventory = new ArrayList<>();
-
+    private int level;
     private String name = Main.launchName;
     public String getName() { return name; }
     public void setName(String name) { this.name = name; }
