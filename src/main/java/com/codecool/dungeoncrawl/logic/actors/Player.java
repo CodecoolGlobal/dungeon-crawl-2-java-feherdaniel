@@ -5,10 +5,14 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.*;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.model.GameState;
+import com.codecool.dungeoncrawl.model.PlayerModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player extends Actor {
+
     private ArrayList<Item> inventory = new ArrayList<>();
 
     private String name = Main.launchName;
@@ -21,6 +25,12 @@ public class Player extends Actor {
     public Player(Cell cell, int maxHealth) {
         super(cell, maxHealth);
     }
+
+//    public Player(GameState gameState) {
+//        super(cell, maxHealth);
+//    }
+
+
 
     public String getInventory() {
         StringBuilder sb = new StringBuilder("");

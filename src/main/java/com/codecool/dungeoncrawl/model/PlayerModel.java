@@ -7,18 +7,21 @@ public class PlayerModel extends BaseModel {
     private int hp;
     private int x;
     private int y;
+    private String inventory;
 
-    public PlayerModel(String playerName, int x, int y) {
+    public PlayerModel(String playerName, int hp, int x, int y, String inventory) {
         this.playerName = playerName;
+        this.hp = hp;
         this.x = x;
         this.y = y;
+        this.inventory = inventory;
     }
 
     public PlayerModel(Player player) {
         this.playerName = player.getName();
         this.x = player.getX();
         this.y = player.getY();
-
+        this.inventory = player.getInventory();
         this.hp = player.getHealth();
 
     }
@@ -53,5 +56,13 @@ public class PlayerModel extends BaseModel {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(String inventory) {
+        this.inventory = inventory;
     }
 }
