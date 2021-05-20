@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class MapLoader {
     private static int level = 0;
     private static Player player;
-    private static String[] maps = {/* "/map.txt", */ "/map2.txt", "/map3.txt",  "/map4.txt", "/map5.txt","/win.txt"};
+    private static String[] maps = {"/map2.txt", "/map3.txt",  "/map4.txt", "/map5.txt","/win.txt"};
     private static String playerName = Main.launchName;
 
     public static void setPlayerName(String playerName) {
@@ -24,11 +24,11 @@ public class MapLoader {
         return map;
     }
 
-    /* public GameMap loadGameStateMap(int level, String mapText) {
+    public GameMap loadGameStateMap(int level, String mapText) {
         GameMap map = loadMap(mapText);
         this.level = level+1;
         return map;
-    } */
+    }
 
     public static GameMap loadMap(String mapString) {
         InputStream is = MapLoader.class.getResourceAsStream(mapString);
