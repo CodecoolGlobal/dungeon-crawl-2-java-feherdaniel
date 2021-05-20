@@ -52,6 +52,7 @@ public class MapLoaderTest {
         assertEquals("BFSword", map.getCell(19,13).getItem().getTileName());
         assertEquals("potion", map.getCell(21,13).getItem().getTileName());
 
+        MapLoader.onPlayerDeath();
     }
 
     @Test
@@ -64,6 +65,7 @@ public class MapLoaderTest {
         map = MapLoader.loadNextMap();
         assertEquals("player", map.getCell(2, 2).getActor().getTileName());
 
+        MapLoader.onPlayerDeath();
     }
 
     @Test
@@ -72,6 +74,8 @@ public class MapLoaderTest {
         GameMap map = MapLoader.loadNextMap();
         assertEquals(4, map.getPlayer().getDmg());
         assertEquals(2, map.getPlayer().getArmour());
+
+        MapLoader.onPlayerDeath();
     }
 
     @Test
@@ -82,6 +86,7 @@ public class MapLoaderTest {
         MapLoader.onPlayerDeath();
         map = MapLoader.loadNextMap();
         assertEquals(1000 ,map.getPlayer().getHealth());
+        MapLoader.onPlayerDeath();
     }
 
     @Test
@@ -126,5 +131,6 @@ public class MapLoaderTest {
         assertEquals("BFSword", map.getCell(19,13).getItem().getTileName());
         assertEquals("potion", map.getCell(21,13).getItem().getTileName());
 
+        MapLoader.onPlayerDeath();
     }
 }
