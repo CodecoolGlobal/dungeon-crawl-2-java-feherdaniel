@@ -15,6 +15,8 @@ public class Cell implements Drawable {
     private Item item;
 
     Cell(GameMap gameMap, int x, int y, CellType type) {
+        if (gameMap == null) throw new IllegalArgumentException();
+
         this.gameMap = gameMap;
         this.x = x;
         this.y = y;
@@ -61,6 +63,6 @@ public class Cell implements Drawable {
      */
     public int[] getMapParams() { return new int[]{gameMap.getWidth(), gameMap.getHeight()}; }
 
-    public Player getAssociatedPlayer() { return gameMap.getPlayer(); }
+    //public Player getAssociatedPlayer() { return gameMap.getPlayer(); }
 
 }

@@ -44,7 +44,7 @@ public abstract class Actor implements Drawable {
      * Function that enables Actors to react to passage of time
      * or movement of player
      */
-    public void onRefresh() {}
+    public void onRefresh() {};
 
     /**
      * Move Actor by some horizontal and vertical offset, optionally defining all cells that
@@ -135,9 +135,11 @@ public abstract class Actor implements Drawable {
      * @param dy Relative (signed) vertical offset
      */
     public void attack(int dx, int dy) {
-        Actor target = cell.getNeighbour(dx, dy).getActor();
-        if (target != null && target.isEnemy() != this.isEnemy())
-            target.damage(dmg);
+        if (cell.getNeighbour(dx, dy) != null) {
+            Actor target = cell.getNeighbour(dx, dy).getActor();
+            if (target != null && target.isEnemy() != this.isEnemy())
+                target.damage(dmg);
+        }
     }
     public void attack(Actor target) {
         if (target != null && target.isEnemy() != this.isEnemy())
