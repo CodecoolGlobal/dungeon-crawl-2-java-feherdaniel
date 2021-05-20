@@ -115,7 +115,7 @@ public class MapLoader {
         return map;
     }
 
-    private static void generatePlayer(GameMap map, Cell cell) {
+    public static void generatePlayer(GameMap map, Cell cell) {
         if (Objects.isNull(player)) {
             switch (Main.launchName) {
                 case "Plantel":

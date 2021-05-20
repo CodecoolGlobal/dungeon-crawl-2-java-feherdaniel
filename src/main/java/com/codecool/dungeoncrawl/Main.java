@@ -168,7 +168,6 @@ public class Main extends Application {
             LoadModal.loadMap(stage, map);
             map = MapLoader.loadGameStateMap(LoadModal.level, LoadModal.mapLoad);
             refresh();
-
         }
     }
 

@@ -68,6 +68,7 @@ public class LoadModal {
             gridPane.add(space, 3, i+1);
             gridPane.add(player, 8, i+1 );
             var state = gdbm.loadGameState(allStates.get(i).getId());
+            var newPlayer = gdbm.getPlayer(allStates.get(i).getId());
             id.setOnAction(e -> {
                 MapLoader mp = new MapLoader();
 //                Main main = new Main();
