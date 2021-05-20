@@ -14,7 +14,8 @@ public class MapLoader {
     private static String[] maps = {"/map.txt", "/map2.txt", "/map3.txt", "/map4.txt", "/map5.txt","/win.txt"};
 
     public static GameMap loadNextMap() {
-        GameMap map = loadMap(maps[level]);
+        InputStream is = MapLoader.class.getResourceAsStream(maps[level]);
+        GameMap map = loadMap(is);
         level++;
         player.setLevel(level);
         return map;
@@ -22,17 +23,17 @@ public class MapLoader {
 
     public static int getLevel() { return level; }
 
-    public GameMap loadGameStateMap(int level, String mapText) {
-        GameMap map = loadMap(mapText);
-        this.level = level+1;
+    public static GameMap loadGameStateMap(int level, String mapText) {
+        InputStream is = new ByteArrayInputStream(mapText.getBytes());
+        GameMap map = loadMap(is);
+        level = level+1;
         player.setLevel(level);
         return map;
     }
 
-    public static GameMap loadMap(String mapString) {
-        InputStream is = MapLoader.class.getResourceAsStream(mapString);
-
-        Scanner scanner = new Scanner(is);
+    public static GameMap loadMap(InputStream mapStream) {
+        System.out.println(mapStream);
+        Scanner scanner = new Scanner(mapStream);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 

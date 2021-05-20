@@ -44,6 +44,7 @@ public class Main extends Application {
     Label firstItem = new Label();
     Label inventory = new Label();
     Label damageLabel = new Label();
+    Button loadButton = new Button("Load");
     Button nameLabel = new Button();
     TextField nameChangeLabel;
     //TextField
@@ -67,6 +68,7 @@ public class Main extends Application {
         nameLabel.setText(launchName);
         ui.add(new Label("Name: "), 0, 0);
         ui.add(nameLabel, 1, 0);
+//        ui.add(loadButton, 2, 10);
 
         ui.addRow(1);
         ui.addRow(2);

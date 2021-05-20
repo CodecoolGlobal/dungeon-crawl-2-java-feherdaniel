@@ -10,7 +10,7 @@ public class MapSaver {
 
     public static String saveMap(GameMap gameMap) {
         StringBuilder sb = new StringBuilder();
-
+        sb.append(gameMap.getWidth()).append(" ").append(gameMap.getHeight()).append("\n");
         for (int y = 0; y < gameMap.getHeight(); y++) {
             for (int x = 0; x < gameMap.getWidth(); x++) {
                     Cell cell = gameMap.getCell(x, y);
