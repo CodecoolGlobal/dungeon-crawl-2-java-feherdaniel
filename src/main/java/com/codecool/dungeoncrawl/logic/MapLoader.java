@@ -4,6 +4,8 @@ import com.codecool.dungeoncrawl.logic.actors.*;
 import com.codecool.dungeoncrawl.Main;
 import com.codecool.dungeoncrawl.logic.items.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.Scanner;

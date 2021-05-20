@@ -5,6 +5,7 @@ import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Actor;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.util.LoadModal;
 import com.codecool.dungeoncrawl.logic.util.SaveModal;
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -57,6 +58,9 @@ public class Main extends Application {
     public static void main(String[] args) {
         launchName = args.length > 0 ? args[0] : "Player";
         launch(args);
+    }
+    public void setMap(GameMap map) {
+        this.map = map;
     }
 
     @Override
@@ -159,31 +163,16 @@ public class Main extends Application {
         if (saveCombination.match(keyEvent)) {
             SaveModal.display(stage, map);
         }
-    }
-    public static void saveModal() {
-        int modalWidth = 250;
-        String modalText = "Do you want to save?";
-        Stage saveWindow = new Stage();
-        saveWindow.setTitle("Save");
-        saveWindow.setWidth(modalWidth);
+        KeyCombination loadCombination = new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN);
+        if (loadCombination.match(keyEvent)) {
+            LoadModal.loadMap(stage, map);
+            map = MapLoader.loadGameStateMap(LoadModal.level, LoadModal.mapLoad);
+            refresh();
 
-        Label label = new Label();
-        label.setText(modalText);
-
-        Button saveButton = new Button("Save");
-        saveButton.setOnAction(e -> {
-            /*save()*/
-            saveWindow.close();
-        });
-        Button cancelButton = new Button ("Cancel");
-        cancelButton.setOnAction(e -> {
-            /*cancel()*/
-            saveWindow.close();
-        });
-
+        }
     }
 
-    private void refresh() {
+    public void refresh() {
         context.setFill(Color.BLACK);
         context.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
         List<Actor> actors = new ArrayList<>();
