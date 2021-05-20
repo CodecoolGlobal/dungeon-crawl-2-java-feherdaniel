@@ -179,7 +179,7 @@ public class Main extends Application {
         }
         healthLabel.setText("" + map.getPlayer().getHealth() + "/" + map.getPlayer().getMaxHealth());
         firstItem.setText("" + map.getPlayer().getFirstItem());
-        inventory.setText("" + map.getPlayer().getInventory());
+        inventory.setText("" + map.getPlayer().getOtherItems());
         damageLabel.setText("" + map.getPlayer().getDmg());
 
         if (map.nextLevel() || restartFlag) {

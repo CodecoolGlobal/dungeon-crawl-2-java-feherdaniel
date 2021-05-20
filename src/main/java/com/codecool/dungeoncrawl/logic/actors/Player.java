@@ -32,15 +32,25 @@ public class Player extends Actor {
 
 
 
-    public String getInventory() {
+    public String getOtherItems() {
         StringBuilder sb = new StringBuilder("");
-        for (Item item: inventory) {
-           if (item != inventory.get(0)) {
+        for (Item item : inventory) {
+            if (item != inventory.get(0)) {
                 sb.append(item.getTileName() + "\n");
-           }
+
+            }
         }
         return sb.toString();
     }
+
+    public String getInventory() {
+        StringBuilder sB = new StringBuilder("");
+        for (Item item : inventory) {
+            sB.append(item.getTileName() + ", ");
+        }
+        return sB.toString();
+    }
+
 
     public String getFirstItem() {
         for (Item item: inventory) {
@@ -97,5 +107,13 @@ public class Player extends Actor {
             }
         }
         catch (NullPointerException ignored){}
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

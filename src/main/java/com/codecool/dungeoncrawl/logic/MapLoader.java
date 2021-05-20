@@ -16,12 +16,16 @@ public class MapLoader {
     public static GameMap loadNextMap() {
         GameMap map = loadMap(maps[level]);
         level++;
+        player.setLevel(level);
         return map;
     }
+
+    public static int getLevel() { return level; }
 
     public GameMap loadGameStateMap(int level, String mapText) {
         GameMap map = loadMap(mapText);
         this.level = level+1;
+        player.setLevel(level);
         return map;
     }
 

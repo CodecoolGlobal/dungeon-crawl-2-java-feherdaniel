@@ -8,7 +8,7 @@ import com.codecool.dungeoncrawl.logic.items.Sword;
 
 public class MapSaver {
 
-    public String saveMap(GameMap gameMap) {
+    public static String saveMap(GameMap gameMap) {
         StringBuilder sb = new StringBuilder();
 
         for (int y = 0; y < gameMap.getHeight(); y++) {

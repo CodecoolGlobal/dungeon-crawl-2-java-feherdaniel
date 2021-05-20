@@ -13,11 +13,15 @@ public class GameDatabaseManager {
     public void setup() throws SQLException {
         DataSource dataSource = connect();
         playerDao = new PlayerDaoJdbc(dataSource);
+        gameStateDao = new GameStateDaoJdbc(dataSource);
     }
 
-    public void savePlayer(Player player) {
-        PlayerModel model = new PlayerModel(player);
-        playerDao.add(model);
+    public void savePlayer(PlayerModel playerModel) {
+        playerDao.add(playerModel);
+    }
+
+    public void saveGameState(GameState gameState) {
+        gameStateDao.add(gameState);
     }
 
     private DataSource connect() throws SQLException {
