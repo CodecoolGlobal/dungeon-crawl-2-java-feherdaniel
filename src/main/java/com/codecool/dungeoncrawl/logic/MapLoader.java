@@ -4,6 +4,8 @@ import com.codecool.dungeoncrawl.logic.actors.*;
 import com.codecool.dungeoncrawl.Main;
 import com.codecool.dungeoncrawl.logic.items.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 import java.util.Scanner;
@@ -19,21 +21,26 @@ public class MapLoader {
     }
 
     public static GameMap loadNextMap() {
-        GameMap map = loadMap(maps[level]);
+        InputStream is = MapLoader.class.getResourceAsStream(maps[level]);
+        GameMap map = loadMap(is);
         level++;
+        player.setLevel(level);
         return map;
     }
 
-    public GameMap loadGameStateMap(int level, String mapText) {
-        GameMap map = loadMap(mapText);
-        this.level = level+1;
+    public static int getLevel() { return level; }
+
+    public static GameMap loadGameStateMap(int level, String mapText) {
+        InputStream is = new ByteArrayInputStream(mapText.getBytes());
+        GameMap map = loadMap(is);
+        level = level+1;
+        player.setLevel(level);
         return map;
     }
 
-    public static GameMap loadMap(String mapString) {
-        InputStream is = MapLoader.class.getResourceAsStream(mapString);
-
-        Scanner scanner = new Scanner(is);
+    public static GameMap loadMap(InputStream mapStream) {
+        System.out.println(mapStream);
+        Scanner scanner = new Scanner(mapStream);
         int width = scanner.nextInt();
         int height = scanner.nextInt();
 
@@ -113,7 +120,7 @@ public class MapLoader {
         return map;
     }
 
-    private static void generatePlayer(GameMap map, Cell cell) {
+    public static void generatePlayer(GameMap map, Cell cell) {
         if (Objects.isNull(player)) {
             switch (playerName) {
                 case "Plantel":

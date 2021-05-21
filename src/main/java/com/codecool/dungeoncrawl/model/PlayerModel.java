@@ -5,12 +5,15 @@ import com.codecool.dungeoncrawl.logic.actors.Player;
 public class PlayerModel extends BaseModel {
     private String playerName;
     private int hp;
+    private int maxHp;
     private int x;
     private int y;
     private String inventory;
+    private int level;
 
-    public PlayerModel(String playerName, int hp, int x, int y, String inventory) {
+    public PlayerModel(String playerName, int hp, int x, int y, String inventory, int maxHp) {
         this.playerName = playerName;
+        this.maxHp = maxHp;
         this.hp = hp;
         this.x = x;
         this.y = y;
@@ -22,8 +25,9 @@ public class PlayerModel extends BaseModel {
         this.x = player.getX();
         this.y = player.getY();
         this.inventory = player.getInventory();
+        this.maxHp = player.getMaxHealth();
         this.hp = player.getHealth();
-
+        this.level = player.getLevel();
     }
 
     public String getPlayerName() {
@@ -37,6 +41,10 @@ public class PlayerModel extends BaseModel {
     public int getHp() {
         return hp;
     }
+
+    public int getMaxHp() { return maxHp; }
+
+    public void setMaxHp(int maxHp) { this.maxHp = maxHp; }
 
     public void setHp(int hp) {
         this.hp = hp;
@@ -53,6 +61,8 @@ public class PlayerModel extends BaseModel {
     public int getY() {
         return y;
     }
+
+    public int getLevel() { return level; }
 
     public void setY(int y) {
         this.y = y;

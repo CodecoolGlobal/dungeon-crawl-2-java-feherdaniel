@@ -11,6 +11,7 @@ DROP TABLE IF EXISTS public.player;
 CREATE TABLE public.player (
     id serial NOT NULL PRIMARY KEY,
     player_name text NOT NULL,
+    max_hp integer NOT NULL,
     hp integer NOT NULL,
     x integer NOT NULL,
     y integer NOT NULL,

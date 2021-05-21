@@ -127,6 +127,8 @@ public abstract class Actor implements Drawable {
         cell.setActor(null);
     }
 
+    public void setHealth(int hp) { this.health = hp; }
+
     public boolean isEnemy() { return isEnemy; }
 
     /**
