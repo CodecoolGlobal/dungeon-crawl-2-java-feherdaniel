@@ -70,6 +70,7 @@ public class Main extends Application {
         ui.setPadding(new Insets(10));
 
         nameLabel.setText(launchName);
+        MapLoader.setPlayerName(launchName);
         ui.add(new Label("Name: "), 0, 0);
         ui.add(nameLabel, 1, 0);
 //        ui.add(loadButton, 2, 10);

@@ -85,6 +85,15 @@ public class PlayerTest {
     }
 
     @Test
+    void move_onEmptyCell() {
+        Cell cell = gameMap.getCell(1, 1);
+        Player player = new Player(cell);
+        Cell moveCell = gameMap.getCell(1,2);
+        player.move(0,1);
+        assertEquals(moveCell, player.getCell());
+    }
+
+    @Test
     void move_unlocksDoorWithKey() {
         Cell cell = gameMap.getCell(1, 1);
         Player player = new Player(cell);
