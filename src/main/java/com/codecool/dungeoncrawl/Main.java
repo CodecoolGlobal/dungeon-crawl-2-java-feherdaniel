@@ -167,7 +167,7 @@ public class Main extends Application {
         KeyCombination loadCombination = new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN);
         if (loadCombination.match(keyEvent)) {
             LoadModal.loadMap(stage, map);
-            map = MapLoader.loadGameStateMap(LoadModal.level, LoadModal.mapLoad);
+            map = MapLoader.loadGameStateMap(LoadModal.level, LoadModal.mapLoad, LoadModal.playerLoad);
             MapLoader.generatePlayer(map, LoadModal.playerLoad.getCell());
             map.setPlayer(LoadModal.playerLoad);
             refresh();

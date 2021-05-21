@@ -30,7 +30,8 @@ public class MapLoader {
 
     public static int getLevel() { return level; }
 
-    public static GameMap loadGameStateMap(int level, String mapText) {
+    public static GameMap loadGameStateMap(int level, String mapText, Player palyerLoad) {
+        player = palyerLoad;
         InputStream is = new ByteArrayInputStream(mapText.getBytes());
         GameMap map = loadMap(is);
         level = level+1;
