@@ -63,11 +63,9 @@ public class PlayerTest {
         Key key = new Key(cell);
         player.addToInventory(key);
         // There is a bug in the game the first item picked up 2x
-        Key key2 = new Key(swordCell);
-        player.addToInventory(key2);
         Sword sword = new Sword(swordCell);
         player.addToInventory(sword);
-        assertEquals("key\n" + "sword\n", player.getInventory());
+        assertEquals("key, sword, ", player.getInventory());
     }
 
     @Test

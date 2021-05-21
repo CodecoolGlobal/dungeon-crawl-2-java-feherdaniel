@@ -4,6 +4,8 @@ import com.codecool.dungeoncrawl.logic.actors.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MapLoaderTest {
@@ -31,7 +33,8 @@ public class MapLoaderTest {
     @Test
      void loadMap_mapTxtFile_gameMap() {
         MapLoader.setPlayerName("");
-        GameMap map = MapLoader.loadMap("/mapTest.txt");
+        InputStream testMap = MapLoader.class.getResourceAsStream("/mapTest.txt");
+        GameMap map = MapLoader.loadMap(testMap);
         assertEquals("player", map.getCell(6, 18).getActor().getTileName());
 
         assertEquals(CellType.EMPTY, map.getCell(0,11).getType());

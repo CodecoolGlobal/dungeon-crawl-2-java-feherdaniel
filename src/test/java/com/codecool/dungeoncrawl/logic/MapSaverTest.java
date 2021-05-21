@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MapSaverTest {
 
-    @Test
+    /*@Test
     void saveMap_createsTxt() {
         MapLoader.setPlayerName("");
         GameMap map = MapLoader.loadMap("/mapTest.txt");
@@ -32,6 +32,6 @@ public class MapSaverTest {
                             "  #...@...#      #......x \n" +
                             "  #########      ######## \n";
         assertEquals(testMap, mapSaver.saveMap(map));
-    }
+    } */
 
 }
